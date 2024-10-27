@@ -120,7 +120,6 @@ ESPSection:NewToggle("ESP Turn On/Off", "ESP Turn On/Off", function(state)
             HighlightClone.FillTransparency = 0.5
             HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
             HighlightClone.OutlineTransparency = 0
-            LP.Character.Highlight:Destroy()
         end
 
         game.PS.PlayerAdded:Connect(function(joined)
@@ -134,7 +133,6 @@ ESPSection:NewToggle("ESP Turn On/Off", "ESP Turn On/Off", function(state)
             HighlightClone.FillTransparency = 0.5
             HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
             HighlightClone.OutlineTransparency = 0
-            LP.Character.Highlight:Destroy()
         end)
 
         PL.CharacterAdded:Connect(function(reset)
@@ -148,7 +146,6 @@ ESPSection:NewToggle("ESP Turn On/Off", "ESP Turn On/Off", function(state)
             HighlightClone.FillTransparency = 0.5
             HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
             HighlightClone.OutlineTransparency = 0
-            LP.Character.Highlight:Destroy()
         end)
     else
         for i, v in pairs(game:GetDescendants()) do
