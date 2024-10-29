@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
-local Window = Library.CreateLib("GUI By MaqViS", "RJTheme3")
+local Window = Library.CreateLib("Cheats By MaqViS", "RJTheme3")
 
 local MainTab = Window:NewTab("Main")
 local CharacterTab = Window:NewTab("Character Settings")
@@ -109,9 +109,10 @@ end)
 
 ESPSection:NewToggle("ESP Turn On/Off", "ESP Turn On/Off", function(state)
     if state then
+        local PS = game:GetService("Players")
+        local PL = PS:GetChildren()
         for i, v in pairs(PL) do
             repeat wait() until v.Character   
-            if not v ~= LP then
                 local HighlightClone = Highlight:Clone()
                 HighlightClone.Name = "Highlight"
                 HighlightClone.Adornee = v.Character
@@ -121,69 +122,61 @@ ESPSection:NewToggle("ESP Turn On/Off", "ESP Turn On/Off", function(state)
                 HighlightClone.FillTransparency = 0.5
                 HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
                 HighlightClone.OutlineTransparency = 0
-            end    
         end
 
-        while wait(0.5) do
-            if state then
-                for o, n in pairs(PL) do
-                    repeat wait() until n.Character
-                    repeat 
-                        wait(0.5)
-                        if n.Character.Highlight == nil then
-                            local HighlightClone = Highlight:Clone()
-                            HighlightClone.Name = "Highlight"
-                            HighlightClone.Adornee = joined.Character
-                            HighlightClone.Parent = joined.Character
-                            HighlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                            HighlightClone.FillColor = Color3.fromRGB(EspColor1, EspColor2, EspColor3)
-                            HighlightClone.FillTransparency = 0.5
-                            HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
-                            HighlightClone.OutlineTransparency = 0
-                        end    
-                    until not n.Character.Highlight == nil        
-                end    
-            else
-                break   
+        while true do
+            if not state then
+                break
+            end    
+            print("YEs")
+            local PS = game:GetService("Players")
+            local PL = PS:GetChildren()
+            for o, n in pairs(PL) do
+                local HighlightClone = Highlight:Clone()
+                HighlightClone.Name = "Highlight"
+                HighlightClone.Adornee = n.Character
+                HighlightClone.Parent = n.Character
+                LP.Character.Highlight:Destroy()
+                HighlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                HighlightClone.FillColor = Color3.fromRGB(EspColor1, EspColor2, EspColor3)
+                HighlightClone.FillTransparency = 0.5
+                HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
+                HighlightClone.OutlineTransparency = 0      
             end
-        end            
+        end 
 
         PS.PlayerAdded:Connect(function(joined)
-            if state then
-                wait(10)
-                repeat wait() until joined.Character
-                local HighlightClone = Highlight:Clone()
-                HighlightClone.Name = "Highlight"
-                HighlightClone.Adornee = joined.Character
-                HighlightClone.Parent = joined.Character
-                HighlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                HighlightClone.FillColor = Color3.fromRGB(EspColor1, EspColor2, EspColor3)
-                HighlightClone.FillTransparency = 0.5
-                HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
-                HighlightClone.OutlineTransparency = 0
-            else
-                print("Не работать")    
-            end    
+            print("Joined")
+            local HighlightClone = Highlight:Clone()
+            HighlightClone.Name = "Highlight"
+            HighlightClone.Adornee = joined.Character
+            HighlightClone.Parent = joined.Character
+            HighlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+            HighlightClone.FillColor = Color3.fromRGB(EspColor1, EspColor2, EspColor3)
+            HighlightClone.FillTransparency = 0.5
+            HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
+            HighlightClone.OutlineTransparency = 0
         end)
 
-        while wait(0.5) do
-            local PL = PS:GetPlayers()
-        end
+        PS.PlayerAdded:Connect(function(plr)
+            plr.CharacterAdded:Connect(function(charac)
+                charac:FindFirstChild("Humanoid").Died:Connect(function(reset)
+                    print("Died")
+                    local HighlightClone = Highlight:Clone()
+                    HighlightClone.Name = "Highlight"
+                    HighlightClone.Adornee = reset.Character
+                    HighlightClone.Parent = reset.Character
+                    HighlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+                    HighlightClone.FillColor = Color3.fromRGB(EspColor1, EspColor2, EspColor3)
+                    HighlightClone.FillTransparency = 0.5
+                    HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
+                    HighlightClone.OutlineTransparency = 0
+                end)
+            end)
+        end)
 
-        PL.CharacterAdded:Connect(function(char)
-            char:FindFirstChild("Humanoid").Died:Connect(function(reset)
-                wait(3)
-                repeat wait() until reset.Character
-                local HighlightClone = Highlight:Clone()
-                HighlightClone.Name = "Highlight"
-                HighlightClone.Adornee = reset.Character
-                HighlightClone.Parent = reset.Character
-                HighlightClone.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
-                HighlightClone.FillColor = Color3.fromRGB(EspColor1, EspColor2, EspColor3)
-                HighlightClone.FillTransparency = 0.5
-                HighlightClone.OutlineColor = Color3.fromRGB(255, 255, 255)
-                HighlightClone.OutlineTransparency = 0
-            end)    
+        PS.PlayerRemoving:Connect(function(leave)
+            leave.Character.Highlight:Destroy()
         end)
     else
         for i, v in pairs(game:GetDescendants()) do
