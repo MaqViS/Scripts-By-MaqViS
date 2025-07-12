@@ -1,9 +1,15 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Robojini/Tuturial_UI_Library/main/UI_Template_1"))()
 local Window = Library.CreateLib("Cheats By MaqViS", "RJTheme3")
 
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+amount = 0
+finalamount = 0
+
 local MainTab = Window:NewTab("Main")
 local CharacterTab = Window:NewTab("Character Settings")
 local ESPTab = Window:NewTab("Visual")
+local LuckyTab = Window:NewTab("LB Battlegrounds")
 
 local PS = game:GetService("Players")
 local PL = PS:GetChildren()
@@ -14,6 +20,9 @@ local HighlightClone = Highlight:Clone()
 local Teleport = MainTab:NewSection("Teleporting")
 local CharacterSettings = CharacterTab:NewSection("Character Settings")
 local ESPSection = ESPTab:NewSection("ESP")
+local LuckyBlock = LuckyTab:NewSection("Lucky Blocks")
+local Invisible = CharacterTab:NewSection("Invisible")
+local InfinityYield = MainTab:NewSection("Infinity Yield")
 
 local WS = game:GetService("Workspace")
 
@@ -185,4 +194,67 @@ ESPSection:NewToggle("ESP Turn On/Off", "ESP Turn On/Off", function(state)
             end    
         end   
     end       
+end)
+LuckyBlock:NewSlider("Amount", "Amount", 250, 0, function(amountlb)
+			finalamount = amountlb	
+end)
+
+LuckyBlock:NewButton("Lucky Block", "Lucky Block", function(lb)
+			repeat
+			amount = amount + 1
+			ReplicatedStorage.SpawnLuckyBlock:FireServer()
+			until amount == finalamount
+			amount = 0
+end)
+
+LuckyBlock:NewButton("Super Lucky Block", "Super Lucky Block", function(lb)
+			repeat
+			amount = amount + 1
+			ReplicatedStorage.SpawnSuperBlock:FireServer()
+			until amount == finalamount
+			amount = 0
+end)
+
+LuckyBlock:NewButton("Diamond Lucky Block", "Diamond Lucky Block", function(lb)
+			repeat
+			amount = amount + 1
+			ReplicatedStorage.SpawnDiamondBlock:FireServer()
+			until amount == finalamount
+			amount = 0
+end)
+
+LuckyBlock:NewButton("Rainbow Lucky Block", "Rainbow Lucky Block", function(lb)
+			repeat
+			amount = amount + 1
+			ReplicatedStorage.SpawnRainbowBlock:FireServer()
+			until amount == finalamount
+			amount = 0
+end)
+
+LuckyBlock:NewButton("Galaxy Lucky Block", "Galaxy Lucky Block", function(lb)
+			repeat
+			amount = amount + 1
+			ReplicatedStorage.SpawnGalaxyBlock:FireServer()
+			until amount == finalamount
+			amount = 0
+end)
+
+LuckyBlock:NewButton("All Lucky Blocks", "All Lucky Blocks", function(lb)
+			repeat
+			amount = amount + 1
+			ReplicatedStorage.SpawnGalaxyBlock:FireServer()
+			ReplicatedStorage.SpawnRainbowBlock:FireServer()
+			ReplicatedStorage.SpawnLuckyBlock:FireServer()
+			ReplicatedStorage.SpawnSuperBlock:FireServer()
+			ReplicatedStorage.SpawnDiamondBlock:FireServer()
+			until amount == finalamount
+			amount = 0
+end)
+
+Invisible:NewButton("Invisible", "Invisible", function(invis)
+			loadstring(game:HttpGet('https://pastebin.com/raw/3Rnd9rHf'))()
+end)
+
+InfinityYield:NewButton("Infinity Yield", "Infinity Yield", function(InfYield)
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
