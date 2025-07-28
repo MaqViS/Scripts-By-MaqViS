@@ -7,6 +7,7 @@ local UserInputService = game:GetService("UserInputService")
 amount = 0
 finalamount = 0
 speed = 0
+resize = 0
 
 local MainTab = Window:NewTab("Main")
 local CharacterTab = Window:NewTab("Character Settings")
@@ -364,9 +365,13 @@ UserInputService.InputBegan:Connect(function(input)
 				end				
 			end
 end)
-Size:NewSlider("Size", "Size", 250, 0, function(sizeamount)
-			sizechange(LP, sizeamount)
+Size:NewSlider("SizeMAX", "SizeMAX", 250, 1, function(sizeamount)
+			resize = sizeamount
 end)
+Size:NewSlider("SizeMIN", "SizeMIN", 1, 0, function(sizeamount)
+			resize = sizeamount
+end)
+Size:NewButton("Re Size", "Re Size", function(sizechange(LP, resize))
 Size:NewButton("Default Size", "Default Size", function()
 			sizechange(LP, 1)
 end)
